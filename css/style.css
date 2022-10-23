@@ -2,31 +2,43 @@
   box-sizing: border-box;
 }
 
-body {
-  display: grid;
-  grid-template-columns: 250px 1fr 200px;
-  grid-template-rows: 200px 1fr 150px;
-
-  min-height: 100vh;
+.outerBlock {
+  border: 5px solid blue;
+  /* height: 700px; */
 }
 
-header,
-footer {
-  grid-column-start: 1;
-  grid-column-end: 4;
-}
-body > * {
-  padding: 10px;
+.innerBlock {
   border: 5px solid red;
+  padding: 10px;
 }
-@media screen and (max-width: 768px) {
-  body {
-    grid-template-columns: 1fr;
-    grid-template-rows: 200px auto auto auto 150px;
-  }
-  header,
-  footer {
-    grid-column-start: 1;
-    grid-column-end: 2;
-  }
+
+.gridContainer {
+  display: grid;
+
+  /* задання сітки*/
+  grid-template-columns: 1fr minmax(320px, 800px) 1fr;
+  grid-template-rows: repeat(3, auto);
+
+  /* ASCII графіка */
+  grid-template-areas:
+    "a a a"
+    ". b ."
+    "c c c";
+
+  /* неявні гріди */
+
+  /* відступи між комірками */
+  /* column-gap: 10px; */
+  /* row-gap: 20px; */
+}
+
+.area:first-child {
+  grid-area: a;
+}
+.area:nth-child(2) {
+  grid-area: b;
+}
+
+.area:nth-child(3) {
+  grid-area: c;
 }
